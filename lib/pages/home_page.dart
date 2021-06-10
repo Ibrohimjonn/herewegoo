@@ -23,8 +23,8 @@ class _HomeState extends State<Home> {
           onPressed: () {
             AuthService.signOutUser(context);
           },
-          color: Colors.blue,
-          child: Text('Logout',style: TextStyle(color: Colors.deepOrange),),
+          color: Colors.deepOrange,
+          child: Text('Logout',style: TextStyle(color: Colors.white),),
         ),
       ),
     );
