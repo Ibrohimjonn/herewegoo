@@ -12,19 +12,23 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
-  var titleController = TextEditingController();
+  var firstnameController = TextEditingController();
+  var lastnameController = TextEditingController();
   var contentController = TextEditingController();
+  var dataController = TextEditingController();
 
   _addPost() async{
-    String title = titleController.text.toString();
+    String firstname = firstnameController.text.toString();
+    String lastname = lastnameController.text.toString();
     String content = contentController.text.toString();
-    if(title.isEmpty || content.isEmpty) return;
-    _apiAddPost(title,content);
+    String data = dataController.text.toString();
+    if(firstname.isEmpty || lastname.isEmpty || content.isEmpty || data.isEmpty) return;
+    _apiAddPost(data,content,firstname,lastname);
   }
 
-  _apiAddPost(String title,String content) async{
+  _apiAddPost(String firstname, String lastname, String data,String content) async{
     var id = await Prefs.loadUserId();
-    RTDBService.addPost(new Post(id,title,content)).then((response) => {
+    RTDBService.addPost(new Post(id,firstname,lastname,data,content)).then((response) => {
       _respAddPost(),
     });
   }
@@ -49,9 +53,16 @@ class _DetailState extends State<Detail> {
             children: [
               SizedBox(height: 15,),
               TextField(
-                controller: titleController,
+                controller: firstnameController,
                 decoration: InputDecoration(
-                  hintText: 'title',
+                  hintText: 'firstname',
+                ),
+              ),
+              SizedBox(height: 15,),
+              TextField(
+                controller: lastnameController,
+                decoration: InputDecoration(
+                  hintText: 'lastname',
                 ),
               ),
               SizedBox(height: 15,),
@@ -59,6 +70,13 @@ class _DetailState extends State<Detail> {
                 controller: contentController,
                 decoration: InputDecoration(
                   hintText: 'content',
+                ),
+              ),
+              SizedBox(height: 15,),
+              TextField(
+                controller: dataController,
+                decoration: InputDecoration(
+                  hintText: 'data',
                 ),
               ),
               SizedBox(height: 15,),

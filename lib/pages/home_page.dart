@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:herewegoo/model/post_model.dart';
 import 'package:herewegoo/services/auth_service.dart';
 import 'package:herewegoo/services/prefs_service.dart';
 import 'package:herewegoo/services/rtdb_service.dart';
-
 import 'detail_page.dart';
 
 class Home extends StatefulWidget {
@@ -84,9 +84,19 @@ class _HomeState extends State<Home> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(post.title,style: TextStyle(color: Colors.black,fontSize: 20),),
+          Text(post.userId,style: TextStyle(color: Colors.black),),
+          Row(
+            children: [
+              SizedBox(height: 10,),
+              Text(post.firstname,style: TextStyle(color: Colors.black,fontSize: 18),),
+              SizedBox(width: 5,),
+              Text(post.lastname,style: TextStyle(color: Colors.black,fontSize: 18),),
+            ],
+          ),
           SizedBox(height: 10,),
-          Text(post.content,style: TextStyle(color: Colors.black,fontSize: 16),),
+          Text(post.data,style: TextStyle(color: Colors.black,fontSize: 12),),
+          SizedBox(height: 10,),
+          Text(post.content,style: TextStyle(color: Colors.black,fontSize: 15),),
         ],
       ),
     );

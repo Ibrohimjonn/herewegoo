@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:herewegoo/pages/detail_page.dart';
 import 'package:herewegoo/pages/home_page.dart';
 import 'package:herewegoo/pages/signin_page.dart';
 import 'package:herewegoo/pages/signup_page.dart';
-
 import 'pages/home_page.dart';
 import 'pages/signin_page.dart';
 import 'services/prefs_service.dart';
